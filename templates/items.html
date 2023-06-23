@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}{{restaurant.name}} Items{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h4 class="mt-4">Restaurant Details:</h4>
+           <section class="intro">
+  <div class="bg-image h-100" style="background-color: #f5f7fa;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+                  <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Latitude/Longitude</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ restaurant.id }}</td>
+                        <td>{{ restaurant.name }}</td>
+                        <td>{{ restaurant.location }}</td>
+                        <td>{{ restaurant.lat_long }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 class="mt-4">Items:</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item_name, item_price in items_list %}
+                        <tr>
+                            <td>{{ item_name }}</td>
+                            <td>{{ item_price }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

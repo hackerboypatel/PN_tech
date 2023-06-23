@@ -1,0 +1,45 @@
+{%extends "base.html"%}
+{%block title%}Home{%endblock%}
+{%block body%}
+<div class="container">
+    <h3 class="mt-3">Restaurant List</h3>
+    <section class="intro">
+  <div class="bg-image h-100" style="background-color: #f5f7fa;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+                  <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>lat_long</th>
+                        <th>Items</th>
+                        <th>Full Details</th>
+                    </tr>
+                </thead>
+                 <tbody class="purple lighten-4">
+                <tbody>
+                    {% for restaurant in restaurants %}
+                    <tr>
+                        <td>{{ restaurant.id }}</td>
+                        <td>{{ restaurant.name }}</td>
+                        <td>{{ restaurant.location }}</td>
+                        <td>{{ restaurant.lat_long }}</td>
+                        <td> <a class="btn btn-primary" href="/items/{{restaurant.id}}" role="button">Items</a></td>
+                        <td> <a class="btn btn-primary" href = "/details/{{restaurant.id}}" role="button">Restaurant Details</a> </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

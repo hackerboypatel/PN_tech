@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h4 class="mt-4">You Searched For: {{ data.searched_query }}</h4>
+            {% if data.names %}
+                <h5 class="mt-4">Results by Name:</h5>
+                <section class="intro">
+  <div class="bg-image h-100" style="background-color: #f5f7fa;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+                  <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Latitude/Longitude</th>
+                            <th>Items</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for restaurant in data.names %}
+                            <tr>
+                                <td>{{ restaurant.id }}</td>
+                                <td>{{ restaurant.name }}</td>
+                                <td>{{ restaurant.location }}</td>
+                                <td>{{ restaurant.lat_long }}</td>
+                                <td> <a href = "/items/{{restaurant.id}}">Items</a> </td>
+                                <td> <a href = "/details/{{restaurant.id}}">Details</a> </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+            {% if data.locations %}
+                <h5 class="mt-4">Results by Location:</h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Latitude/Longitude</th>
+                            <th>Items</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for restaurant in data.locations %}
+                            <tr>
+                                <td>{{ restaurant.id }}</td>
+                                <td>{{ restaurant.name }}</td>
+                                <td>{{ restaurant.location }}</td>
+                                <td>{{ restaurant.lat_long }}</td>
+                                <td> <a href = "/items/{{restaurant.id}}">Items</a> </td>
+                                <td> <a href = "/details/{{restaurant.id}}">Details</a> </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+
+            {% if data.ids %}
+                <h5 class="mt-4">Results by ID's:</h5>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Latitude/Longitude</th>
+                            <th>Items</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for restaurant in data.ids %}
+                            <tr>
+                                <td>{{ restaurant.id }}</td>
+                                <td>{{ restaurant.name }}</td>
+                                <td>{{ restaurant.location }}</td>
+                                <td>{{ restaurant.lat_long }}</td>
+                                <td> <a href = "/items/{{restaurant.id}}">Items</a> </td>
+                                <td> <a href = "/details/{{restaurant.id}}">Details</a> </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+            
+
+            {% if data.lat_long %}
+            <h5 class="mt-4">Results by Latitude/Longitude:</h5>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Latitude/Longitude</th>
+                        <th>Items</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for restaurant in data.lat_long %}
+                        <tr>
+                            <td>{{ restaurant.id }}</td>
+                            <td>{{ restaurant.name }}</td>
+                            <td>{{ restaurant.location }}</td>
+                            <td>{{ restaurant.lat_long }}</td>
+                            <td> <a href = "/items/{{restaurant.id}}">Items</a> </td>
+                            <td> <a href = "/details/{{restaurant.id}}">Details</a> </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% endif %}
+
+        {% if not data.names and not data.locations and not data.ids and not data.lat_long %}
+            <p>No results found.</p>
+        {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

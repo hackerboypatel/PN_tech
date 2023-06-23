@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Restaurant Details{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <h4 class="mt-4">Restaurant Details:</h4>
+            <section class="intro">
+  <div class="bg-image h-100" style="background-color: #f5f7fa;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body p-0">
+                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true" style="position: relative; height: 700px">
+                  <table class="table table-striped mb-0">
+                    <thead style="background-color: #002d72;">
+                <thead>
+                    <tr>
+                        <th>Detail Name</th>
+                        <th>Offers</th>
+                        <th>Cuisines</th>
+                        <th>Currency</th>
+                        <th>Location</th>
+                        <th>Address</th>
+                        <th>City ID</th>
+                        <th>Zip Code</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Locality</th>
+                        <th>Locality Verbose</th>
+                        <th>Country ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for detail_name, detail_offers, detail_cuisines, detail_currency, detail_location, detail_address, detail_city_id, detail_zipcode, detail_latitude, detail_longitude, detail_locality, detail_locality_verbose, detail_country_id in details_list %}
+                        <tr>
+                            <td>{{ detail_name }}</td>
+                            <td>{{ detail_offers }}</td>
+                            <td>{{ detail_cuisines }}</td>
+                            <td>{{ detail_currency }}</td>
+                            <td>{{ detail_location }}</td>
+                            <td>{{ detail_address }}</td>
+                            <td>{{ detail_city_id }}</td>
+                            <td>{{ detail_zipcode }}</td>
+                            <td>{{ detail_latitude }}</td>
+                            <td>{{ detail_longitude }}</td>
+                            <td>{{ detail_locality }}</td>
+                            <td>{{ detail_locality_verbose }}</td>
+                            <td>{{ detail_country_id }}</td>
+                            
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
